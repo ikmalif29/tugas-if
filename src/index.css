@@ -1,0 +1,16 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* Add this to your global CSS file or within your component's styles */
+.dark {
+    background-color: #1a1a1a;
+    /* Dark background */
+    color: white;
+    /* Light text */
+}
+
+.dark a {
+    color: #f3f3f3;
+    /* Lighter links in dark mode */
+}
