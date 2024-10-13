@@ -26,7 +26,7 @@ export default function Header({ isDarkMode, toggleTheme }) {
                     <a href="/contact" className="text-black font-bold hover:text-orange-200 transition-colors duration-300">
                         Contact
                     </a>
-                    <ShoppingCart className="hover:text-orange-200" />
+                    <ShoppingCart className="hover:text-orange-200 transition-colors duration-300" />
                     <button onClick={toggleTheme} className="relative w-8 h-8 flex items-center justify-center focus:outline-none">
                         {/* Sun icon with transition */}
                         <div className={`absolute transition-all duration-300 ${isDarkMode ? 'opacity-0 scale-50' : 'opacity-100 scale-100'}`}>
