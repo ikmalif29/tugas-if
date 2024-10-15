@@ -1,8 +1,9 @@
 import { useState } from "react";
+import { Route, Routes, Navigate, BrowserRouter } from "react-router-dom"; // Import BrowserRouter
 import Footer from "./Components/Footer";
 import Header from "./Components/Header";
 import Product from "./Components/Product";
-
+import CartProduct from "./Components/CartProduct";
 
 function App() {
   const products = [
@@ -13,7 +14,7 @@ function App() {
       harga: 750000,
       deskripsi: "Sepatu sneakers nyaman dengan desain stylish, cocok untuk aktivitas sehari-hari.",
       stok: 10,
-      kategori: "Sneakers"
+      kategori: "Sneakers",
     },
     {
       id: 2,
@@ -22,7 +23,7 @@ function App() {
       harga: 1200000,
       deskripsi: "Sepatu formal berkualitas tinggi, cocok untuk acara-acara resmi.",
       stok: 5,
-      kategori: "Formal"
+      kategori: "Formal",
     },
     {
       id: 3,
@@ -31,45 +32,56 @@ function App() {
       harga: 650000,
       deskripsi: "Sepatu lari ringan dan tahan lama, dirancang untuk kenyamanan saat berolahraga.",
       stok: 15,
-      kategori: "Running"
+      kategori: "Running",
     },
     {
       id: 4,
-      nama: "Sepatu Boots D",
+      nama: "Sepatu Running C",
       foto: "https://png.pngtree.com/png-vector/20230501/ourmid/pngtree-sneakers-running-shoes-bright-colors-png-image_7078169.png",
-      harga: 950000,
-      deskripsi: "Sepatu boots kuat dan tangguh, cocok untuk aktivitas outdoor.",
-      stok: 8,
-      kategori: "Boots"
+      harga: 650000,
+      deskripsi: "Sepatu lari ringan dan tahan lama, dirancang untuk kenyamanan saat berolahraga.",
+      stok: 15,
+      kategori: "Running",
     },
     {
       id: 5,
-      nama: "Sepatu Sandal E",
+      nama: "Sepatu Running C",
       foto: "https://png.pngtree.com/png-vector/20230501/ourmid/pngtree-sneakers-running-shoes-bright-colors-png-image_7078169.png",
-      harga: 300000,
-      deskripsi: "Sepatu sandal ringan dan nyaman, ideal untuk digunakan sehari-hari.",
-      stok: 20,
-      kategori: "Sandal"
-    }
+      harga: 650000,
+      deskripsi: "Sepatu lari ringan dan tahan lama, dirancang untuk kenyamanan saat berolahraga.",
+      stok: 15,
+      kategori: "Running",
+    },
+    {
+      id: 6,
+      nama: "Sepatu Running C",
+      foto: "https://png.pngtree.com/png-vector/20230501/ourmid/pngtree-sneakers-running-shoes-bright-colors-png-image_7078169.png",
+      harga: 650000,
+      deskripsi: "Sepatu lari ringan dan tahan lama, dirancang untuk kenyamanan saat berolahraga.",
+      stok: 15,
+      kategori: "Running",
+    },
   ];
 
   const [isDarkMode, setIsDarkMode] = useState(false);
 
   const toggleTheme = () => {
     setIsDarkMode(!isDarkMode);
-    // Optionally, save the theme preference in localStorage
-    // localStorage.setItem('theme', isDarkMode ? 'light' : 'dark');
   };
 
   return (
-    <>
-      <div className={isDarkMode ? 'dark' : ''}>
+    <BrowserRouter> 
+      <div className={isDarkMode ? "dark" : ""}>
         <Header isDarkMode={isDarkMode} toggleTheme={toggleTheme} />
-        <Product products={products} />
+        <Routes>
+          <Route path="/" element={<Navigate to="/products" />} />
+          <Route path="/products" element={<Product products={products} />} />
+          <Route path="/cart" element={<CartProduct />} />
+        </Routes>
         <Footer isDarkMode={isDarkMode} />
       </div>
-    </>
-  )
+    </BrowserRouter>
+  );
 }
 
-export default App
+export default App;
